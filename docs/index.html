@@ -1,28 +1,224 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Title of the document</title>
-</head>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <title>Occlusion Culling Performance Testing in Unity</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.5;
+        margin: 0 auto;
+        max-width: 800px; /* Adjust this value to your desired page width */
+        padding: 0;
+      }
 
-<body>
-  <h1><a id="user-content-proformance-testing-occlusion-culling-in-unity" class="anchor" aria-hidden="true" href="#proformance-testing-occlusion-culling-in-unity"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Proformance testing occlusion culling in Unity.</h1>
-  <p>Unity Occlusion Culling is a technique used in the Unity game engine to improve performance by reducing the number of objects that need to be rendered. It works by determining which objects in a scene are not visible to the camera, and then culling (removing) them from rendering. This results in a reduced number of drawcalls being sent to the graphics card and thus it can lead to an increase in proformance.</p>
-  <table role="table">
-  <thead>
-  <tr>
-  <th><img src="https://user-images.githubusercontent.com/94382032/223394366-7ddea0b9-4875-434c-8c8e-8fa13138e9a3.png" alt="Frustum Culling"></th>
-  <th><img src="https://user-images.githubusercontent.com/94382032/223394366-7ddea0b9-4875-434c-8c8e-8fa13138e9a3.png" alt="Frustum Culling"></th>
-  <th><img src="https://user-images.githubusercontent.com/94382032/223394366-7ddea0b9-4875-434c-8c8e-8fa13138e9a3.png" alt="Frustum Culling"></th>
-  </tr>
-  </thead>
-  </table>
-  <p>Unity Occlusion Culling uses a combination of techniques such as frustum culling, occlusion queries, and portal rendering to achieve its results. Frustum culling eliminates objects outside the camera's field of view, occlusion queries check if an object is hidden behind another object, and portal rendering allows culling of objects behind closed doors or other obstructions.</p>
-  <p>References:</p>
-  <p>Unity Technologies. (2021). Unity - Manual: Occlusion Culling. Retrieved from <a href="https://docs.unity3d.com/Manual/OcclusionCulling.html" rel="nofollow">https://docs.unity3d.com/Manual/OcclusionCulling.html</a></p>
-</body>
+      h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+        padding: 0;
+      }
 
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      table th, table td {
+        padding: 0.5rem;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+      }
+
+      table th {
+        font-weight: bold;
+        background-color: #eee;
+      }
+
+      table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      .chart-container {
+        position: relative;
+        height: 400px;
+      }
+      .point-chart-container{
+        position: relative;
+        height: 400px;
+      }
+
+      .diagram-container{
+        display: flex;
+      }
+      .diagram-container img{
+        width: 33%;
+        border: 3px solid black;
+      }
+
+      canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Occlusion Culling Performance Testing in Unity</h1>
+
+    <p>Welcome to our Github wiki page on occlusion culling performance testing in Unity. Here, we will cover the basics of occlusion culling and provide information on how to test its performance in Unity.</p>
+
+    <h2>What is Occlusion Culling?</h2>
+
+    <p>Occlusion culling is a technique used in 3D graphics to improve performance by not rendering objects that are not visible to the camera. This is achieved by detecting which objects are hidden by other objects and not rendering them, saving valuable processing time and improving frame rate.</p>
+
+
+
+    <div class="diagram-container">
+      <img src="/images/frustum culling.png" alt="frustum culling example image">
+      <img src="/images/occlusion queries.png" alt="occlusion queries example image">
+      <img src="/images/portal rendering.png" alt="portal rendering example image">
+    </div>
+    
+
+    <h2>How to Test Occlusion Culling Performance in Unity</h2>
+
+    <p>There are several ways to test the performance of occlusion culling in Unity:</p>
+
+    <ul>
+      <li>Use Unity's built-in occlusion culling tools</li>
+      <li>Use third-party tools such as Occlusion Culling Benchmark or Occlusion Culling Inspector</li>
+      <li>Write custom scripts to test occlusion culling performance</li>
+    </ul>
+
+    <p>Regardless of the method you choose, it's important to test your occlusion culling implementation thoroughly to ensure optimal performance and avoid performance bottlenecks.</p>
+
+    <h2>Data Table: Average Frame Rate with and without Occlusion Culling</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Scene</th>
+          <th>With Occlusion Culling</th>
+          <th>Without Occlusion Culling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Scene 1</td>
+          <td>60 FPS</td>
+          <td>30 FPS</td>
+        </tr>
+        <tr>
+          <td>Scene 2</td>
+          <td>45 FPS</td>
+          <td>15 FPS</td>
+        </tr>
+        <tr>
+          <td>Scene 3</td>
+          <td>50 FPS</td>
+          <td>20 FPS</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Graph: Average Frame Rate with and without Occlusion Culling</h2>
+
+
+
+    <div class="chart-container">
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Scene 1', 'Scene 2', 'Scene 3'],
+          datasets: [{
+            label: 'With Occlusion Culling',
+            data: [60, 45, 50],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          }, {
+            label: 'Without Occlusion Culling',
+            data: [      30, 15, 20],
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+
+<div class="point-chart-container">
+  <canvas id="pointChart"></canvas>
+</div>
+
+
+
+<script>
+  var ctx = document.getElementById('pointChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'scatter',
+    data: {
+      datasets: [{
+        label: 'Point Graph',
+        data: [
+          { x: 10, y: 20 },
+          { x: 20, y: 30 },
+          { x: 30, y: 50 },
+          { x: 40, y: 70 },
+          { x: 50, y: 90 },
+          { x: 60, y: 110 },
+          { x: 70, y: 130 }
+        ],
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1,
+        showLine: true,
+        lineTension: 0
+      }]
+    },
+    options: {
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'bottom',
+          scaleLabel: {
+          display: true,
+          labelString: 'Horizontal Axis Label'
+    }
+        }
+      }
+    }
+  });
+</script>
+
+
+  </body>
 </html>
-
-
-
-
